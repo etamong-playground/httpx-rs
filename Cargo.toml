@@ -1,10 +1,10 @@
 [package]
-name = "etamong-httperr"
+name = "etamong-httpx"
 version = "0.1.0"
 edition = "2021"
 description = "etamong-lab cross-app error contract (planning#188) — Rust port matching shared/libs/httperr (Go)"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/etamong-playground/httperr-rs"
+repository = "https://github.com/etamong-playground/httpx-rs"
 
 [dependencies]
 serde_json = "1"
