@@ -1,15 +1,15 @@
-//! etamong-lab cross-app error contract (planning#188), Rust port.
+//! Report-once HTTP error handling.
 //!
 //! The contract is: a handler that fails emits **one** stderr line of JSON
-//! (Promtail → Loki) carrying the technical detail under a fresh 8-hex `ref`,
-//! and writes a clean `{"error","ref"}` body to the client. The `ref` is the
-//! join key between a user's report and the exact log line — paste it into
-//! the "etamong-lab Errors" Grafana dashboard.
+//! carrying the technical detail under a fresh 8-hex `ref`, and writes a clean
+//! `{"error","ref"}` body to the client. The `ref` is the join key between a
+//! user's report and the exact log line.
 //!
-//! The wire format here matches `shared/libs/httperr` (Go) field-for-field:
+//! The wire format is language-portable — the same JSON line
 //! `{"level":"error","msg":"request failed","app","ref","method","path",
-//!  "status","user","err"}`. `level` is lowercased ("error" not "ERROR") so a
-//! single Loki query `| json | level="error"` works across every app.
+//!  "status","user","err"}` across every service. `level` is lowercased
+//! ("error" not "ERROR") so a single `| json | level="error"` log query works
+//! everywhere.
 //!
 //! Framework-agnostic on purpose. axum / actix / hyper apps wrap these
 //! primitives in their own response type.

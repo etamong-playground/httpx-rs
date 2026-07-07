@@ -2,7 +2,7 @@
 name = "etamong-httpx"
 version = "0.1.0"
 edition = "2021"
-description = "etamong-lab cross-app error contract (planning#188) — Rust port matching shared/libs/httperr (Go)"
+description = "Report-once HTTP error handling for Rust — a language-portable error contract with client ref codes."
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/etamong-playground/httpx-rs"
 
